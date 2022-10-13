@@ -10,6 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 
+from distutils.debug import DEBUG
 from pathlib import Path
 from decouple import config
 
@@ -24,13 +25,15 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = config("SECRET_KEY", default="test")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = config("DEBUG", cast=bool, default=True)
-
-ALLOWED_HOSTS = config(
+# DEBUG = config("DEBUG", cast=bool, default=True)
+DEBUG = False
+'''ALLOWED_HOSTS = config(
     "ALLOWED_HOSTS",
     cast=lambda v: [s.strip() for s in v.split(",")],
     default="*",
-)
+)'''
+
+ALLOWED_HOSTS = ['todo-test-30.herokuapp.com', '127.0.0.1']
 
 
 # Application definition
